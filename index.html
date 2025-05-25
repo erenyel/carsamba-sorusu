@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevgilim İçin Sürpriz</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: sans-serif;
+            background: linear-gradient(135deg, #ffe6f0, #ffccde); /* PEMBEMSİ GRADIENT */
+            margin: 0;
+            padding: 20px;
+        }
+        img {
+            width: 200px;
+            margin: 10px;
+            max-width: 80%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        button {
+            font-size: 50px;
+            padding: 40px 80px;
+            margin: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            max-width: 90%;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        #yesBtn {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #noBtn {
+            background-color: #ffb6c1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Çarşamba benimle kalır mısın?</h1>
+    <div>
+        <img src="kedi1.png" alt="Tatlı Kedi">
+        <img src="kedi2.png" alt="Tatlı Kedi">
+        <img src="kedi3.png" alt="Tatlı Kedi">
+    </div>
+    <div>
+        <button id="yesBtn">Evet</button>
+        <button id="noBtn">Hayır</button>
+    </div>
+
+    <script>
+        const questions = [
+            "Çarşamba benimle kalır mısın?",
+            "Çarşamba birlikte kalalım mı?",
+            "Çarşamba benimle uyur musun?",
+            "Çarşamba birlikte kalıyor muyuz?",
+            "Çarşamba geceyi beraber geçirir miyiz?",
+            "Çarşamba seninle yan yana uyuyalım mı?",
+            "Çarşamba bana eşlik eder misin?",
+            "Çarşamba beraber olur muyuz?",
+            "Çarşamba sen de benimle kalmak ister misin?",
+            "Çarşamba kolumda uyumak ister misin?"
+        ];
+
+        let currentQuestion = 0;
+        let yesScale = 1;
+        let noScale = 1;
+        const questionElem = document.getElementById('question');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+
+        noBtn.addEventListener('click', () => {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+            } else {
+                currentQuestion = Math.floor(Math.random() * questions.length);
+            }
+            questionElem.textContent = questions[currentQuestion];
+
+            noScale = Math.max(noScale - 0.05, 0.5);
+            yesScale = Math.min(yesScale + 0.1, 3);
+
+            noBtn.style.transform = `scale(${noScale})`;
+            yesBtn.style.transform = `scale(${yesScale})`;
+        });
+
+        yesBtn.addEventListener('click', () => {
+            alert("Yaşasın aşkımmm🥰 Çok güzel bir gün olacak😋");
+        });
+    </script>
+</body>
+</html>
