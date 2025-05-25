@@ -3,33 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sevgilim İçin Sürpriz</title>
+    <title>Aşkıma bir soru🥰</title>
     <style>
         body {
             text-align: center;
             font-family: sans-serif;
-            background: linear-gradient(135deg, #ffe6f0, #ffccde); /* PEMBEMSİ GRADIENT */
+            background: linear-gradient(135deg, #ffe6f0, #ffccde);
             margin: 0;
             padding: 20px;
+            overflow-x: hidden;
+        }
+        .hearts {
+            font-size: 30px;
+            animation: float 3s infinite alternate;
+        }
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        #images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
         }
         img {
-            width: 200px;
-            margin: 10px;
-            max-width: 80%;
+            width: 150px;
             height: auto;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        #buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         button {
-            font-size: 50px;
-            padding: 40px 80px;
-            margin: 20px;
+            font-size: 40px;
+            padding: 30px 60px;
             cursor: pointer;
-            transition: transform 0.3s;
-            max-width: 90%;
+            transition: transform 0.3s, box-shadow 0.3s;
             border: none;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
         #yesBtn {
             background-color: #ff69b4;
@@ -42,13 +69,15 @@
     </style>
 </head>
 <body>
-    <h1 id="question">Çarşamba benimle kalır mısın?</h1>
-    <div>
+    <div class="hearts">💖 💕 💖 💕 💖</div>
+    <h1 id="question">Aşkıma bir soru🥰</h1>
+    <h2>Çarşamba benimle kalır mısın?</h2>
+    <div id="images">
         <img src="kedi1.png" alt="Tatlı Kedi">
         <img src="kedi2.png" alt="Tatlı Kedi">
         <img src="kedi3.png" alt="Tatlı Kedi">
     </div>
-    <div>
+    <div id="buttons">
         <button id="yesBtn">Evet</button>
         <button id="noBtn">Hayır</button>
     </div>
@@ -70,7 +99,7 @@
         let currentQuestion = 0;
         let yesScale = 1;
         let noScale = 1;
-        const questionElem = document.getElementById('question');
+        const questionElem = document.querySelector('h2');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
 
